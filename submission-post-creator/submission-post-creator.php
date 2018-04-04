@@ -7,7 +7,6 @@ Author: Lubos Zapotocny
 Author URI: http://lubos3d.cz
 License: GPL2
 */
-use HTML_Forms\Submission;
 
 function process_cms($string, $replaceValues){
     preg_match_all('~%%(.*?)%%~s', $string, $datas);
