@@ -129,7 +129,10 @@ function csv_submissions_pull() {
     $csv_output = '"'.implode('","',array_keys($datas[0])).'"';
   
     foreach ($datas as $row) {
-      $csv_output .= "\r\n".'"'.implode('","',$row).'"';
+      $csv_output .= "\r\n";
+      $with_breaks = '"'.implode('","',$row).'"';
+      $csv_output .= str_replace(array("\n", "\r"), '', $with_breaks);
+
     }
   
     $filename = "export_".date("Y-m-d_H-i",time());
