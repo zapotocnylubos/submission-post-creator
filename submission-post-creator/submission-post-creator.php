@@ -2,11 +2,14 @@
 /*
 Plugin name: Submission post creator
 Plugin URI: http://lubos3d.cz
-Version: 1.1
+Version: 1.2
 Author: Lubos Zapotocny
 Author URI: http://lubos3d.cz
 License: GPL2
 */
+
+use HTML_Forms\Submission;
+
 
 function process_cms($string, $replaceValues){
     preg_match_all('~%%(.*?)%%~s', $string, $datas);
@@ -109,17 +112,45 @@ function csv_submissions_pull() {
     if ( ! current_user_can( 'manage_options' ) )
         return;    
 
-    global $wpdb;
 
-    $results = $wpdb->get_results("SELECT s.* FROM {$wpdb->prefix}hf_submissions s;", OBJECT);
+
+    global $wpdb;
+    $table = $wpdb->prefix .'hf_submissions';
+    $results = $wpdb->get_results("SELECT s.* FROM {$table} s ORDER BY s.submitted_at", OBJECT_K );
+    $submissions = array();
+    foreach( $results as $key => $object ) {
+        $submission = Submission::from_object( $object );
+        $submissions[$key] = $submission;
+    }
+
+    $columns = array();
+    foreach( $submissions as $s ) {
+        if( ! is_array( $s->data ) ) {
+            continue;
+        }
+
+        foreach( $s->data as $field => $value ) {
+            if (!array_key_exists($field, $columns)) {
+                $columns[$field] = true;
+            }
+        }
+    }
+    $columns = array_keys( $columns );
 
     $datas = [];
-    foreach($results as $result) 
+    foreach($submissions as $submission) 
     { 
-        $submission = empty( $result->data ) ? array() : (array) json_decode( $result->data, true );
-        $submission['submitted_at'] =  $result->submitted_at;
+        $submissionData = [];
 
-        $datas[] = $submission;
+        foreach( $columns as $column ) {
+            //$data = empty( $result->data ) ? array() : (array) json_decode( $result->data, true );
+            $submissionData[$column] = isset( $submission->data[ $column ] ) ? $submission->data[ $column ] : '';
+        }
+
+        //$submission = empty( $result->data ) ? array() : (array) json_decode( $result->data, true );
+        $submissionData['submitted_at'] =  $submission->submitted_at;
+
+        $datas[] = $submissionData;
     }
 
     if (empty($datas)) {
