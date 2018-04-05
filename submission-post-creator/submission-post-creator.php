@@ -2,7 +2,7 @@
 /*
 Plugin name: Submission post creator
 Plugin URI: http://lubos3d.cz
-Version: 1.2
+Version: 1.5
 Author: Lubos Zapotocny
 Author URI: http://lubos3d.cz
 License: GPL2
