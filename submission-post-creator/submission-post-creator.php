@@ -32,7 +32,7 @@ function create_registration_post($submission, $form){
     $new_post = [
      'post_title'    => $postTitle,
      'post_content'  => $postBody,
-     'post_status'   => 'pending',
+     'post_status'   => get_option('competition-post-status'),
      'post_author'   => 1,
      'post_category' => [get_option('competition-postcategory')]  // prihlasene-projekty
      ];
@@ -52,6 +52,9 @@ add_action("admin_init", function(){
     
     add_settings_field("competition-postcategory", "Do které kategorie postovat?", "postcategory_select_display", "competition-page", "competition"); 
     register_setting("competition", "competition-postcategory");
+
+    add_settings_field("competition-post-status", "Základní stav přípěvku", "post_status_select_display", "competition-page", "competition"); 
+    register_setting("competition", "competition-post-status");
 
     add_settings_field("competition-post-title", "Titulek příspěvku", "post_title_display", "competition-page", "competition"); 
     register_setting("competition", "competition-post-title");
@@ -93,6 +96,21 @@ function postcategory_select_display()
         $name = $category->name;
         $id = $category->term_id;
         echo '<option value="' .$id. '" ' .selected(get_option('competition-postcategory'), $id). '>' .$name. '</option>';
+    }
+    echo '</select>';
+}
+
+function post_status_select_display()
+{
+
+    echo '<select name="competition-post-status">';
+    $statuses = [
+        'publish' => "Publikováno",
+        'pending' => "Čeká na schválení",
+        'draft' => "Koncept"
+    ];
+    foreach($statuses as $statusName => $statusTitle) {
+        echo '<option value="' .$statusName. '" ' .selected(get_option('competition-post-status'), $statusName). '>' .$statusTitle. '</option>';
     }
     echo '</select>';
 }
@@ -160,6 +178,10 @@ function csv_submissions_pull() {
     $csv_output = '"'.implode('","',array_keys($datas[0])).'"';
   
     foreach ($datas as $row) {
+      foreach($row as $key => $value){
+        $row[$key] = str_replace(["'", '"'], '', $value);
+      }      
+
       $csv_output .= "\r\n";
       $with_breaks = '"'.implode('","',$row).'"';
       $csv_output .= str_replace(array("\n", "\r"), '', $with_breaks);
