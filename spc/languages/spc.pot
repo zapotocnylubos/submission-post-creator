@@ -2,6 +2,14 @@
 msgid ""
 msgstr ""
 
+#: spc.php:16
+msgid "Submission post creator"
+msgstr ""
+
+#: spc.php:18
+msgid "Plugin responsible for managing competition with HTML Forms plugin"
+msgstr ""
+
 #: admin/partials/spc-admin-display.php:19
 msgid "Submission post creator"
 msgstr ""

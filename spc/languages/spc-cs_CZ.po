@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: spc\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-05-10 11:41+0000\n"
-"PO-Revision-Date: 2018-05-10 11:46+0000\n"
+"POT-Creation-Date: 2018-05-10 12:15+0000\n"
+"PO-Revision-Date: 2018-05-10 12:16+0000\n"
 "Last-Translator: admin <zapotocnylubos+rrave@gmail.com>\n"
 "Language-Team: Čeština\n"
 "Language: cs_CZ\n"
@@ -14,9 +14,14 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Loco https://localise.biz/"
 
-#: admin/partials/spc-admin-display.php:19
+#: spc.php:16
 msgid "Submission post creator"
 msgstr ""
+
+#: spc.php:18
+msgid "Plugin responsible for managing competition with HTML Forms plugin"
+msgstr ""
+"Plugin zodpovědný za řízení soutěže používající plugin HTML Forms\n"
 
 #: admin/partials/spc-admin-display.php:32
 msgid "CSV DATA EXPORT"

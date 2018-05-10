@@ -13,9 +13,9 @@
  * @package           Spc
  *
  * @wordpress-plugin
- * Plugin Name:       spc
+ * Plugin Name:       Submission post creator
  * Plugin URI:        https://github.com/zapotocnylubos/submission-post-creator
- * Description:       Project-Id-Version
+ * Description:       Plugin responsible for managing competition with HTML Forms plugin
  * Version:           1.0.0
  * Author:            Lubos Zapotocny
  * Author URI:        https://github.com/zapotocnylubos
