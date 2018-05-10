@@ -1,0 +1,68 @@
+#, fuzzy
+msgid ""
+msgstr ""
+
+#: admin/partials/spc-admin-display.php:19
+msgid "Submission post creator"
+msgstr ""
+
+#: admin/partials/spc-admin-display.php:32
+msgid "CSV DATA EXPORT"
+msgstr ""
+
+#: admin/partials/spc-admin-display.php:34
+msgid "utf-8 encoding"
+msgstr ""
+
+#: admin/class-spc-admin.php:108
+msgid "SPC page"
+msgstr ""
+
+#: admin/class-spc-admin.php:108
+msgid "Post creator"
+msgstr ""
+
+#: admin/class-spc-admin.php:119
+msgid "Configuration"
+msgstr ""
+
+#: admin/class-spc-admin.php:121
+msgid "Post category"
+msgstr ""
+
+#: admin/class-spc-admin.php:126
+msgid "News category"
+msgstr ""
+
+#: admin/class-spc-admin.php:131
+msgid "Post status"
+msgstr ""
+
+#: admin/class-spc-admin.php:136
+msgid "Registration form"
+msgstr ""
+
+#: admin/class-spc-admin.php:141
+msgid "Post title"
+msgstr ""
+
+#: admin/class-spc-admin.php:146
+msgid "Post content"
+msgstr ""
+
+#: admin/class-spc-admin.php:152
+msgid "Project solver(s) field(s)"
+msgstr ""
+
+#: admin/class-spc-admin.php:157
+msgid "Project name field"
+msgstr ""
+
+#: admin/class-spc-admin.php:162
+msgid "Project category field"
+msgstr ""
+
+#: admin/class-spc-admin.php:167
+msgid "Project description field"
+msgstr ""
+
