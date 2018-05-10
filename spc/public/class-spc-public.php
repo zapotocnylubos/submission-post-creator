@@ -164,9 +164,9 @@ class Spc_Public {
 
             $project = [
                 'authors' => [],
-                'title' => $subData[get_option('spc-projectname')],
-                'category' => $subData[get_option('spc-projectcategory')],
-                'description' => $subData[get_option('spc-projectdescription')]
+				'title' => array_key_exists(get_option('spc-projectname'), $subData ) ? $subData[get_option('spc-projectname')] : null,
+				'category' => array_key_exists(get_option('spc-projectcategory'), $subData ) ? $subData[get_option('spc-projectcategory')] : null,
+				'description' => array_key_exists(get_option('spc-projectdescription'), $subData ) ? $subData[get_option('spc-projectdescription')] : null
             ];
 
             $solverFields = explode(',', get_option('spc-projectsolver'));
@@ -175,7 +175,7 @@ class Spc_Public {
                     $project['authors'][] = $subData[$solverField];
                 }
             } else {
-                $project['authors'][] = $subData[get_option('spc-projectsolver')];
+				$project['authors'][] = array_key_exists(get_option('spc-projectsolver'), $subData ) ? $subData[get_option('spc-projectsolver')] : null;
             }
 
             $projects[] = $project;
