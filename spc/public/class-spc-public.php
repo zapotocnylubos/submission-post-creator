@@ -154,7 +154,7 @@ class Spc_Public {
     public function spc_rest_projects() {
 	    $projects = [];
 
-        $submissions = hf_get_form_submissions(get_option('spc-registrationform'), ['limit' => false]);
+        $submissions = hf_get_form_submissions(get_option('spc-registrationform'), ['limit' => 50000]);
 
         foreach($submissions as $submission)
         {
